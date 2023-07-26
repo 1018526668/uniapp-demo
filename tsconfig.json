@@ -1,0 +1,26 @@
+{
+	// "extends": "@vue/tsconfig/tsconfig.json",
+	"compilerOptions": {
+		"strict": true,
+		// 允许使用import xxx from xxx 语法
+		"allowSyntheticDefaultImports": true,
+		// 编译的过程中生成兼容代码，使模块能正确的导入
+		"esModuleInterop": true,
+		// 允许any
+		"noImplicitAny": false,
+		"allowJs": true,
+		"sourceMap": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		"lib": ["esnext", "dom"],
+		"types": ["@dcloudio/types"],
+		"typeRoots": [
+			"./node_modules/@types",
+			"./node_modules/@dcloudio/@types",
+			"./src/types"
+		]
+	},
+	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+}

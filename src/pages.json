@@ -1,0 +1,22 @@
+{
+	"pages": [{
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarTitleText": "易企签",
+			"enablePullDownRefresh": false
+		}
+	}],
+	"globalStyle": {
+		"backgroundTextStyle": "light",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "易企签",
+		"navigationBarBackgroundColor": "#4E82EE",
+		"backgroundColor": "#F8F8F8"
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	}
+}

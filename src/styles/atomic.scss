@@ -1,0 +1,152 @@
+@use "sass:map";
+// 自定义原子化css
+// colors
+$colors:(
+    "primary": #3D99FD,
+    "info": #4B67AF,
+    "white": #FFF,
+    "light":#F9F9F9,
+    "light-border":#0C7FFC,
+    "grey": #999,
+    "grey-light": #666,
+	"grey-border": #E5E5E5,
+    "dark-light": #343440,
+    "dark": #222,
+    "black": #000,
+	"warning": #F0AD4E,
+	"error": #DD524D
+);
+$border-color: map.get($colors, "grey-border");
+// font-size
+$base-font-size: 1rem;
+$font-sizes:(
+    20: 20rpx,
+    22: 22rpx,
+    24: 24rpx,
+    26: 26rpx,
+    28: 28rpx,
+    30: 30rpx,
+    32: 32rpx,
+    34: 34rpx,
+);
+
+
+// flex
+$flex-jc:(
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around,
+);
+
+
+$flex-ai:(
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    stretch: stretch,
+);
+
+// spacing
+$spacing-types:(
+    m:margin,
+    p:padding
+);
+$spacing-directions:(
+    t:top,
+    r:right,
+    b:bottom,
+    l:left
+);
+$spacing-sizings:(
+    10:10rpx,
+    14:14rpx,
+    16:16rpx,
+    18:18rpx,
+    20:20rpx,
+    24:24rpx,
+    30:30rpx,
+);
+
+
+
+/**
+* 此处为循环属性产生的css样式
+*/
+
+// colors
+@each $colorKey, $color in $colors {
+    .text-#{$colorKey} {
+        color: $color;
+    }
+    .bg-#{$colorKey} {
+        background: $color;
+    }
+}
+
+// text
+@each $var in (left, center, right) {
+    .text-#{$var} {
+        text-align: $var !important;
+    }
+}
+
+// font-size
+@each $sizeKey, $size in $font-sizes {
+    .fs-#{$sizeKey} {
+        font-size: $size;
+    }
+}
+
+// flex
+@each $key, $value in $flex-jc {
+    .jc-#{$key}{
+        justify-content: $value;
+    }
+}
+
+@each $key, $value in $flex-ai {
+    .ai-#{$key}{
+        align-items: $value;
+    }
+}
+
+// spacing
+// .mt-1 => margin-top
+// m-0, mx-0
+@each $typeKey, $type in $spacing-types {
+    //.m-1
+    @each $sizeKey, $size in $spacing-sizings {
+        .#{$typeKey}-#{$sizeKey}{
+            #{$type}: $size;
+        }
+    }
+    // mx-10, my-10
+    @each $sizeKey, $size in $spacing-sizings {
+        .#{$typeKey}x-#{$sizeKey}{
+            #{$type}-left: $size;
+            #{$type}-right: $size;
+        }
+        .#{$typeKey}y-#{$sizeKey}{
+            #{$type}-top: $size;
+            #{$type}-bottom: $size;
+        }
+    }
+    //.mt-10 { margin-top: 10rpx; }
+    @each $directionKey, $direction in $spacing-directions {
+        @each $sizeKey, $size in $spacing-sizings {
+            .#{$typeKey}#{$directionKey}-#{$sizeKey}{
+                #{$type}-#{$direction}: $size;
+            }
+        }
+    }
+}
+
+
+// borders
+@each $dir in (top, left, bottom, right) {
+    .border-#{$dir}{
+        border-#{$dir}: 2rpx solid $border-color;
+    }
+}

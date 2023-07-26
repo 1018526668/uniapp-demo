@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+      "Vue.volar",
+      "Vue.vscode-typescript-vue-plugin",
+      "uni-helper.uni-app-snippets-vscode",
+      "uni-helper.uni-ui-snippets-vscode",
+      "esbenp.prettier-vscode"
+    ]
+  }
